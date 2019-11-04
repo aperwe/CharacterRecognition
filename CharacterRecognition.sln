@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CharacterRecognition", "CharacterRecognition\CharacterRecognition.csproj", "{4E257229-85E2-455E-A050-72DF2BEA3239}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lib", "lib", "{DACF3903-10E4-47D1-80FE-7B508E3FD59B}"
+	ProjectSection(SolutionItems) = preProject
+		lib\Intuition library.dll = lib\Intuition library.dll
+		lib\Intuition library.pdb = lib\Intuition library.pdb
+		lib\Intuition library.xml = lib\Intuition library.xml
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4E257229-85E2-455E-A050-72DF2BEA3239}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E257229-85E2-455E-A050-72DF2BEA3239}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E257229-85E2-455E-A050-72DF2BEA3239}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E257229-85E2-455E-A050-72DF2BEA3239}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		VisualSVNWorkingCopyRoot = .
+	EndGlobalSection
+EndGlobal
