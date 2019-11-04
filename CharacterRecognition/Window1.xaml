@@ -1,0 +1,159 @@
+﻿<Window x:Class="CharacterRecognition.Window1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="Window1">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        
+        <TabControl Grid.Row="0">
+            <TabItem Header="Main">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="4">
+                        <RadioButton GroupName="Mode" Content="Draw characters"/>
+                        <RadioButton Name="radioButtonBrowse" GroupName="Mode" Content="Choose existing image"/>
+                    </StackPanel>
+                    
+                    <!-- Lower area of the tab. -->
+                    <Grid Grid.Row="1" Grid.Column="0">
+                        <GroupBox Header="Drawing area">
+                            <ImageDrawing x:Name="drawingPanel1"></ImageDrawing>
+                        </GroupBox>
+                    </Grid>
+
+                    <Grid Grid.Row="1" Grid.Column="1">
+                        <StackPanel Orientation="Vertical">
+                            <StackPanel Orientation="Horizontal">
+                                <Label Content="File:"/>
+                                <TextBox Name="textBoxBrowse"/>
+                                <Button Name="buttonBrowse" Content="Browse"/>
+                            </StackPanel>
+                            
+                            <GroupBox Header="State">
+                                <TextBox Name="textBoxState" AcceptsReturn="True" MaxLines="4" IsReadOnly="True"/>
+                            </GroupBox>
+                            
+                            <!-- Updateable values -->
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Error:"/>
+                                <TextBlock Text="1.0" Name="ErrorTB"/>
+                                <TextBlock Text="Iteration:"/>
+                                <TextBlock Text="0" Name="IterationTB"/>
+                                <TextBlock Text="Time:"/>
+                                <TextBlock Text="n/a" Name="TimeElapsedTB"/>
+                                <!-- Button initially disabled while not training. -->
+                                <Button Name="buttonStop" IsEnabled="False" Content="Stop training"/>
+                            </StackPanel>
+                            
+                            <GroupBox Header="Matched patterns">
+                                <StackPanel Orientation="Horizontal">
+                                    <StackPanel Orientation="Vertical">
+                                        <TextBlock Text="Input:"/>
+                                        <Image Height="48" Width="48"/>
+                                    </StackPanel>
+                                    
+                                    <StackPanel Orientation="Vertical">
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="High:"/>
+                                            <TextBlock Name="highChar" Text="[char]"/>
+                                            <TextBlock Name="highPercent" Text="0%"/>
+                                        </StackPanel>
+                                        <Image Height="48" Width="48"/>
+                                    </StackPanel>
+                                    
+                                    <StackPanel Orientation="Vertical">
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="Low:"/>
+                                            <TextBlock Name="lowChar" Text="[char]"/>
+                                            <TextBlock Name="lowPercent" Text="0%"/>
+                                        </StackPanel>
+                                        <Image Height="48" Width="48"/>
+                                    </StackPanel>
+                                </StackPanel>
+                            </GroupBox>
+                        </StackPanel>
+                    </Grid>
+
+                </Grid>
+            </TabItem>
+            
+            <TabItem Header="Settings">
+                <Grid>
+                    
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    
+                    <GroupBox Grid.Row="0" Header="Network properties">
+                        <StackPanel Orientation="Vertical">
+                            <StackPanel Orientation="Horizontal">
+                                <Label Content="Number of layers:"/>
+                                <!--Values: 1, 2, 3-->
+                                <ComboBox Name="comboBoxLayers">
+                                    <ComboBoxItem>1</ComboBoxItem>
+                                    <ComboBoxItem>2</ComboBoxItem>
+                                    <ComboBoxItem>3</ComboBoxItem>
+                                </ComboBox>
+                                <Label Content="Maximum error:"/>
+                                <TextBox Name="textBoxMaxError" Text="1.1"/>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal">
+                                <Label Content="Number of input units (for two-or three-layers net):"/>
+                                <TextBox Name="textBoxInputUnit" Text="295"/>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal">
+                                <Label Content="Number of hidden units (for three-layers net):"/>
+                                <TextBox Name="textBoxHiddenUnit" Text="98"/>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal">
+                                <Label Content="Number of output units:"/>
+                                <TextBox Name="textBoxOutputUnit" Text="36"/>
+                            </StackPanel>
+
+                        </StackPanel>
+                    </GroupBox>
+
+                    <GroupBox Grid.Row="1" Header="Training images' properties">
+                        <WrapPanel>
+                            <Label Content="The directory where training images exist as images:"/>
+                            <TextBox Name="textBoxTrainingBrowse"/>
+                            <Button Content="Browse"/>
+                        </WrapPanel>
+
+                    </GroupBox>
+                    
+                    <StackPanel Grid.Row="2" Orientation="Horizontal">
+                        <Button Content="Save settings"/>
+                        <TextBlock Text="Saving the settings requires to (re)train or load the network."/>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+            
+        </TabControl>
+        
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="4">
+            <Button Content="Clear"/>
+            <Button Name="buttonSave" Content="Save network"/>
+            <Button Name="buttonLoad" Content="Load network"/>
+            <Button Name="buttonTrain" Content="Train network" Click="buttonTrain_Click" />
+            <Button Name="buttonRecognize" Content="Recognize"/>
+        </StackPanel>
+    </Grid>
+</Window>
